@@ -18,6 +18,7 @@ public class HelloController {
     @PreAuthorize("hasRole('ADMIN')")//表示用户必须拥有ROLE_ADMIN角色才能调用当前方法
     public String delete(){
         System.out.println("delete...");
+        System.out.println("delete111...");
         return null;
     }
 }
