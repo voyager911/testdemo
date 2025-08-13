@@ -3,6 +3,7 @@ package dream.it.task;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import dream.it.constant.KeywordConstants;
 import dream.it.pojo.AsinEntity;
 import java.io.File;
 import java.util.ArrayList;
@@ -20,14 +21,10 @@ public class FoldExcelAllFilter {
     private static final List<AsinEntity> allOriginalData = new ArrayList<>();
     // 存储所有含有关键词的数据（第二个sheet）
     private static final List<AsinEntity> allKeywordData = new ArrayList<>();
-    // 女表品牌词（逗号分隔）
-    private static final String KEYWORDS = "fitbit,apple,bark,fit bit,enewton,phoibos,brandy,foxgirl,nibosi,hermès,aobei,joyas,civo,hermes,seiko,skagen,speidel,tag heuer,pulsar,larsson,van cleef,dw,larsson,fiyta,bulgari,charm,salvador,bering,rosegold,raymond,vivienne,boderry,lola rose,longines,david,pavoi,xoxo,mondaine,ferragamo,disney,breda,aesthetic,moissanite,geneva,brighton,polo,trump,steve madden,oferta,mvmt,guess,burberry,serpent,montre,ecodrive,dainty,philippe,panthere,nixon,elgin,tissot,reloj acero,liebeskind,sketchers,armani,anna,kate,armitron,skmei,pandora,jbw,mk,jessica,olevs,pagani,berny,timex,micheal,cavalli,calvin,stretch,coach,lacoste,swiss,skechers,ck,reloj fosil,kate,kenneth,ann klein,michael,michel,boho,swatch,victoria,scott,tommy,michael kors,ofertas,dkny,bulova,peugeot,citizen,omega,tory burch,reloges,olivia burton,rado,relic,michael kors,nine west,stuhrling,movado,ninewest,fossil,goth,betsey johnson,chanel,technomarine,michele,versace,bvlgari,daniel,swarovski,anne,invicta,michele,titan,cartier,sekonda,cheetah,casio,gucci,rolex,shark,tank,fendi,snake";
 
-    // 关键词集合
-    private static final Set<String> KEYWORD_SET = Arrays.stream(KEYWORDS.split(","))
-            .map(String::trim)
-            .filter(s -> !s.isEmpty())
-            .collect(Collectors.toSet());
+    // 引用女表关键词（直接使用枚举类）
+    private static final Set<String> KEYWORD_SET = KeywordConstants.WOMEN_WATCH.getKeywordSet();
+
     // 统计参数
     private static int processedFileCount = 0;
     private static int totalRowCount = 0;

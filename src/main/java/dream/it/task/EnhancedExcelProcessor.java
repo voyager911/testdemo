@@ -3,6 +3,7 @@ package dream.it.task;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import dream.it.constant.KeywordConstants;
 import dream.it.pojo.AsinEntity;
 
 import java.io.File;
@@ -19,14 +20,9 @@ public class EnhancedExcelProcessor {
     // 存储符合二次筛选条件的数据（第三个sheet）
     private static final List<AsinEntity> naturalSearchData = new ArrayList<>();
 
-    // 多关键词配置（逗号分隔）
-    // 男表品牌词（逗号分隔）
-    private static final String KEYWORDS = "miu,f91w,casuo,gunmetal,detomaso,socico,cross,aiyishi,lenqin,affordable,melted,twisted,read,senstone,classy,lunaro,sternglas,marc jacobs,ap royal oak,mulco,casuo,edifice,groomsmen,gunmetal,zelos,oakley,emt,holzkern,solar,ufc,avi-8,heritor,supremo,pintime,puma,stylish,holuns,cassio,bell,gufts,eink,edc,milano,benrus,audemars,hmt,fosil,nubeo,invictus,diesel mega chief,bremont,zavion,skeleton,darth vade,caterpillar,bmw,smith and wesson,mont blanc,caterpillar,captain america,calithe phantom,sanda,shinola,manual wind,stauer,tufina,kinetic,james bond,bugatti,ralph christian,onola,blue angels,biden,adidas,oakley,montblanc,vaer,ferrari,cronos,urwerk,kuoe,hublot,kuoe,bmw,accutron,timberland,ciga design,foxbox,cainte,geoffrey,tritium,invita,forsining,brew,bell and ross,calculator,bugatti,megir,police,paul rich,ferrari,mf mini focus,vincero,lige,jacob,baltic,aviator,wenger,zenith,hugo boss,festina,shinola,roulette,feice,sapphero,hestur,zenith,burei,hugo boss,benyar,shinola,wooden,festina,mulco,digital,baltany,panerai,foxgirl,nibosi,hermès,aobei,joyas,civo,hermes,seiko,skagen,speidel,tag heuer,pulsar,larsson,van cleef,dw,larsson,fiyta,bulgari,charm,salvador,bering,rosegold,raymond,vivienne,boderry,lola rose,longines,david,pavoi,xoxo,mondaine,ferragamo,disney,breda,aesthetic,moissanite,geneva,brighton,polo,trump,steve madden,oferta,mvmt,guess,burberry,serpent,montre,ecodrive,dainty,philippe,panthere,nixon,elgin,tissot,reloj acero,liebeskind,sketchers,armani,anna,kate,armitron,skmei,pandora,jbw,mk,jessica,olevs,pagani,berny,timex,micheal,cavalli,calvin,stretch,coach,lacoste,swiss,skechers,ck,reloj fosil,kate,kenneth,ann klein,michael,michel,boho,swatch,victoria,scott,tommy,michael kors,ofertas,dkny,bulova,peugeot,citizen,omega,tory burch,reloges,olivia burton,rado,relic,michael kors,nine west,stuhrling,movado,ninewest,fossil,goth,betsey johnson,chanel,technomarine,michele,versace,bvlgari,daniel,swarovski,anne,invicta,michele,titan,cartier,sekonda,cheetah,casio,gucci,rolex,shark,tank,fendi,snake";
+    // 引用女表关键词（直接使用枚举类）
+    private static final Set<String> KEYWORD_SET = KeywordConstants.WOMEN_WATCH.getKeywordSet();
 
-    private static final Set<String> KEYWORD_SET = Arrays.stream(KEYWORDS.split(","))
-            .map(String::trim)
-            .filter(s -> !s.isEmpty())
-            .collect(Collectors.toSet());
 
     public static void main(String[] args) {
         // 目标文件夹路径
