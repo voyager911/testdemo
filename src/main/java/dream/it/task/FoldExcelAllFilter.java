@@ -31,9 +31,9 @@ public class FoldExcelAllFilter {
 
     public static void main(String[] args) {
         // 目标文件夹路径
-        String folderPath = "D:\\dream\\seenero";
+        String folderPath = "D:\\dream\\seenero\\dataSource";
         // 输出文件路径
-        String outputFilePath = "D:\\dream\\seenero\\output1.xlsx";
+        String outputFilePath = "D:\\dream\\seenero\\dataSource\\output4.xlsx";
 
         // 验证关键词配置
         if (KEYWORD_SET.isEmpty()) {
